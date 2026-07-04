@@ -1,0 +1,84 @@
+{
+  "releases": [
+    {
+      "id": "break-technology-to-trance",
+      "catalogue": "NEN001",
+      "title": "Break Technology To Trance",
+      "artist": "Christian Duka",
+      "year": 2026,
+      "format": "Digital & CD",
+      "cover": "nen001-break-technology-to-trance.jpg",
+      "audio": "break-technology-to-trance.mp3",
+      "blurb": "Machine-funk broken down into pure trance — the label's opening statement.",
+      "description": "The record that opens the catalogue. Broken machine rhythms are worn down over eight minutes until only the trance is left — hardware sequences fed back on themselves, mixed hot, mastered honest.\n\nNENTOKE 001. Pressed loud.",
+      "tracklist": [
+        "A1 — Break Technology",
+        "A2 — Into Trance",
+        "B1 — Paste-Up (Dub)"
+      ],
+      "links": [
+        { "label": "Bandcamp", "url": "https://nentoke.bandcamp.com" }
+      ]
+    },
+    {
+      "id": "a-thousand-feet-under",
+      "catalogue": "NEN002",
+      "title": "A Thousand Feet Under",
+      "artist": "Vādin",
+      "year": 2026,
+      "format": "Vinyl LP",
+      "cover": "nen002-a-thousand-feet-under.jpg",
+      "audio": "a-thousand-feet-under.mp3",
+      "blurb": "Subterranean drones and shivering voice — a descent, cut deep to wax.",
+      "description": "A single long descent: drones, field recordings and processed voice pulled a thousand feet below the surface. Recorded in one take, cut deep to wax.\n\nNENTOKE 002. Limited vinyl LP.",
+      "tracklist": [
+        "A — A Thousand Feet Under (Part I)",
+        "B — A Thousand Feet Under (Part II)"
+      ],
+      "links": [
+        { "label": "Bandcamp", "url": "https://nentoke.bandcamp.com" }
+      ]
+    },
+    {
+      "id": "ishull-rezonant",
+      "catalogue": "NEN003",
+      "title": "Ishull Rezonant",
+      "artist": "Christian Duka",
+      "year": 2025,
+      "format": "Digital EP",
+      "cover": "nen003-ishull-rezonant.jpg",
+      "audio": "ishull-rezonant.mp3",
+      "blurb": "A resonant island — rooms treated as instruments, tuned and struck.",
+      "description": "Rooms treated as instruments: struck, tuned, and left to ring. A four-track EP built entirely from resonances captured on location.\n\nNENTOKE 003. Digital EP.",
+      "tracklist": [
+        "1 — Ishull",
+        "2 — Rezonant",
+        "3 — Struck",
+        "4 — Left To Ring"
+      ],
+      "links": [
+        { "label": "Bandcamp", "url": "https://nentoke.bandcamp.com" }
+      ]
+    },
+    {
+      "id": "dervaza",
+      "catalogue": "NEN004",
+      "title": "Dervaza",
+      "artist": "MARMO",
+      "year": 2024,
+      "format": "Vinyl 12\"",
+      "cover": "nen004-dervaza.jpg",
+      "audio": "dervaza.mp3",
+      "blurb": "The door to hell as a dancefloor — molten, hypnotic, twelve-inch weight.",
+      "description": "Named for the crater that has burned for half a century. Molten low-end and hypnotic percussion built for long, dark rooms.\n\nNENTOKE 004. Vinyl 12\".",
+      "tracklist": [
+        "A1 — Dervaza",
+        "A2 — Crater",
+        "B1 — Dervaza (Extended Dub)"
+      ],
+      "links": [
+        { "label": "Bandcamp", "url": "https://nentoke.bandcamp.com" }
+      ]
+    }
+  ]
+}

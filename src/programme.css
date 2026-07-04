@@ -1,0 +1,123 @@
+/* ============ THE ARCHIVE — one catalogue, one read head ============ */
+
+.prog{position:relative;min-height:100vh}
+
+/* canvas field — the current release develops here, beside the list */
+.progcv{position:fixed;top:0;right:0;width:44vw;height:100vh;z-index:0;pointer-events:none}
+
+/* header — must sit fully above the read head (38vh) so load lands mid-read */
+.proghead{position:relative;z-index:2;padding:84px 36px 0;max-width:900px}
+.prog-kick{font-family:var(--stencil);font-size:13px;letter-spacing:.02em;color:var(--accent);margin-bottom:8px}
+.prog-h1{font-family:var(--disp);font-size:52px;line-height:.9;letter-spacing:.01em;text-transform:uppercase}
+.prog-intro{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--mut);line-height:1.6;margin-top:12px;max-width:52ch}
+
+.cuenote{position:fixed;right:36px;top:calc(38vh + 18px);z-index:3;width:216px;text-align:right;
+  font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--mut);line-height:1.65;pointer-events:none;
+  background:var(--chip);backdrop-filter:blur(2px);padding:7px 10px;border-radius:2px}
+
+/* read head — spray-red at the rail, hi-vis acid glow across the field */
+.playhead{position:fixed;left:0;right:0;top:38vh;z-index:3;pointer-events:none;height:2px;
+  background:linear-gradient(90deg,
+    var(--accent) 0,var(--accent) 52px,
+    var(--headfaint) 52px,var(--headfaint) 55vw,
+    var(--headglow) 58vw,var(--headglow) 100%)}
+.ph-tc{position:absolute;left:36px;top:-26px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent);
+  background:var(--chip);backdrop-filter:blur(2px);padding:3px 8px;border-radius:2px;white-space:nowrap;
+  animation:tcblip .28s steps(2) 1}
+.ph-tc b{font-weight:700}
+.ph-tc i{font-style:normal;color:var(--mut);margin:0 6px}
+.ph-l1{margin-right:10px}
+.ph-src{font-style:normal;color:var(--ink);background:var(--srcbg);padding:1px 6px;border-radius:2px}
+@keyframes tcblip{0%{opacity:0}100%{opacity:1}}
+
+/* wide screens: the transport gets its own left rail — no overlap possible.
+ * (.prog scope raises specificity so this wins over the base .proglist padding
+ * shorthand regardless of source order.) */
+@media (min-width:1180px){
+  .prog .proglist{padding-left:190px}
+  .ph-tc{left:36px;top:-16px;width:150px;background:none;backdrop-filter:none;padding:0;white-space:normal}
+  .ph-l1{display:block;margin:0}
+  .ph-l2{display:block;margin-top:3px;font-size:10px;opacity:.9}
+}
+
+.cuebtn{position:fixed;right:36px;top:38vh;transform:translateY(-50%);z-index:4;
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--mut);
+  background:var(--chip2);border:1px solid var(--line2);padding:8px 14px;border-radius:2px;cursor:pointer;
+  transition:color .2s,border-color .2s}
+.cuebtn:hover{color:var(--ink)}
+.cuebtn.on{color:var(--accent);border-color:var(--accent)}
+/* speaker glyph — the waves breathe so the sound affordance doesn't go unnoticed */
+.cueicn{display:block;flex:0 0 auto}
+.cw{opacity:.3;animation:cuewave 2.6s ease-in-out infinite}
+.cw2{animation-delay:.35s}
+@keyframes cuewave{0%,100%{opacity:.15}50%{opacity:.95}}
+@media (prefers-reduced-motion: reduce){.cw{animation:none;opacity:.7}}
+
+/* mobile dock (hidden on desktop) */
+.progdock{display:none}
+
+/* archive position strip */
+.progstrip{position:fixed;right:12px;top:0;bottom:0;width:10px;z-index:3;pointer-events:none}
+.progstrip span{position:absolute;right:0;width:5px;height:1px;background:var(--ink);opacity:.16}
+.progstrip b{position:absolute;right:-1px;width:8px;height:18px;border-right:2px solid var(--accent);opacity:.9}
+
+/* the list */
+.proglist{position:relative;z-index:1;list-style:none;margin:0;padding:0 36px;max-width:55vw}
+.prow{border-bottom:1px solid var(--line)}
+.prowlink{display:grid;grid-template-columns:52px 1fr 54px 66px;gap:14px;align-items:baseline;padding:16px 6px;position:relative}
+.pr-n{font-family:var(--mono);font-size:11px;color:var(--mut)}
+.prow.is-current .pr-n{color:var(--accent)}
+.pr-main{min-width:0}
+.pr-t{display:block;font-family:var(--body);font-weight:800;font-size:20px;letter-spacing:0;opacity:.42;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .12s linear}
+.prow.is-current .pr-t{opacity:1}
+.pr-dot{color:var(--accent);font-size:12px;vertical-align:2px}
+.pr-subrow{display:flex;align-items:baseline;gap:10px;margin-top:5px}
+.pr-sub{display:block;flex:1 1 auto;min-width:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--mut);opacity:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pr-sub em{font-style:normal;opacity:.7}
+.pr-y{font-family:var(--mono);font-size:11px;color:var(--mut);text-align:right}
+.pr-cat{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--mut);text-align:right}
+.prow.is-current .pr-cat{color:var(--accent)}
+.prow:hover .pr-n{color:var(--ink)}
+
+/* end block */
+.progend{position:relative;z-index:1;padding:26px 36px 34px}
+.progend p{font-family:var(--mono);font-size:12px;color:var(--mut);margin-top:10px;line-height:1.7}
+.progend a{color:var(--ink);border-bottom:2px solid var(--accent)}
+.progend a:hover{color:var(--accent)}
+
+@media (max-width:880px){
+  /* the monitor becomes a bottom dock: artwork square + transport info + CUE */
+  .progcv{top:auto;right:auto;left:14px;bottom:14px;width:104px;height:104px;z-index:41;
+    border:1px solid var(--line);border-radius:2px}
+  .progdock{display:flex;flex-direction:column;justify-content:center;gap:7px;
+    position:fixed;left:0;right:0;bottom:0;height:132px;z-index:40;
+    background:var(--dock);backdrop-filter:blur(6px);border-top:1px solid var(--line2);
+    padding:12px 16px 12px 134px}
+  .dk-t{font-family:var(--body);font-weight:800;font-size:15px;color:var(--ink);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:92px}
+  .dk-l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--mut);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dk-l b{color:var(--accent)}
+  .dk-l i{font-style:normal;margin:0 5px}
+  .ph-tc{display:none}
+  .cuenote{display:none}
+  .cuebtn{right:14px;top:auto;bottom:84px;transform:none;z-index:42;padding:7px 11px}
+  .proghead{padding:84px 16px 0;max-width:none}
+  .prog-h1{font-size:34px}
+  .prog-intro{font-size:10.5px;margin-top:9px}
+  .proglist{max-width:none;padding:0 16px}
+  .prowlink{grid-template-columns:34px 1fr 48px;gap:10px}
+  .pr-cat{display:none}
+  .pr-t{font-size:17px;white-space:normal}
+  .pr-sub{white-space:nowrap}
+  .progstrip{right:3px;bottom:132px}
+  .progend{padding:26px 16px 40px}
+  body.has-dock .footer{padding-bottom:170px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ph-tc{animation:none}
+}

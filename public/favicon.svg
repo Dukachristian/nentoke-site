@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#0D0D0F"/>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="none" stroke="#E8FF3A" stroke-width="2.5"/>
+  <!-- blocky stencil "N" -->
+  <g fill="#FF3B2E">
+    <rect x="14" y="14" width="10" height="36"/>
+    <rect x="40" y="14" width="10" height="36"/>
+    <polygon points="24,14 34,14 50,50 40,50"/>
+  </g>
+</svg>

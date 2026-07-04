@@ -1,0 +1,137 @@
+/* =====================================================================
+ * NENTOKE RECORDS — design tokens + shared page styles.
+ *
+ * The whole visual identity lives in the CSS custom properties below.
+ * Retheme the label by editing these — colours cascade everywhere, and the
+ * canvas dither reads the same --ink / accent values at runtime.
+ *
+ * Direction: STREET ART / paste-up / screenprint. Poster type (Anton), an
+ * urban-signage wordmark (Bungee), utilitarian mono (DM Mono), a grotesque
+ * for body (Archivo). Punchy spray palette on bone-and-black.
+ * ===================================================================== */
+:root{
+  /* — ground: bone ink on black ("screenprint positive") — */
+  --bg:#0D0D0F; --bg2:#161519; --ink:#F2ECD9;
+  --ink2:#d8d2c2; --ink3:#e2dccc; --mut:#8A8474;
+
+  /* — spray palette: red primary, acid-yellow secondary — */
+  --accent:#FF3B2E;   /* CUE dot, links, active states, links */
+  --accent2:#E8FF3A;  /* hi-vis read-head glow + highlights */
+
+  --line:rgba(242,236,217,.15); --line2:rgba(242,236,217,.30);
+  --chip:rgba(13,13,15,.82); --chip2:rgba(13,13,15,.72); --dock:rgba(13,13,15,.94);
+  --navgrad:rgba(13,13,15,.92); --headfaint:rgba(242,236,217,.10); --srcbg:rgba(242,236,217,.13);
+  --headglow:rgba(232,255,58,.34);
+
+  /* — type — */
+  --disp:'Anton',Impact,sans-serif;         /* poster display */
+  --stencil:'Bungee','Anton',sans-serif;    /* urban-signage wordmark */
+  --mono:'DM Mono',ui-monospace,monospace;  /* metadata / UI */
+  --body:'Archivo',system-ui,sans-serif;    /* body copy */
+}
+/* ink on bone — the print of the same record ("screenprint negative") */
+html[data-theme='light']{
+  --bg:#EDE7D6; --bg2:#E2DBC7; --ink:#141210;
+  --ink2:#39352C; --ink3:#2C2922; --mut:#7A7360;
+  --accent:#E5342B; --accent2:#118A6B;
+  --line:rgba(20,18,16,.17); --line2:rgba(20,18,16,.34);
+  --chip:rgba(237,231,214,.86); --chip2:rgba(237,231,214,.78); --dock:rgba(237,231,214,.95);
+  --navgrad:rgba(237,231,214,.92); --headfaint:rgba(20,18,16,.11); --srcbg:rgba(20,18,16,.10);
+  --headglow:rgba(17,138,107,.30);
+}
+
+/* theme toggle — a small circle of the other world */
+.themedot{position:fixed;right:18px;bottom:18px;z-index:70;width:15px;height:15px;border-radius:50%;
+  background:var(--ink);border:1px solid var(--line2);cursor:pointer;padding:0;opacity:.75;transition:opacity .2s}
+.themedot:hover{opacity:1}
+@media (max-width:880px){
+  body.has-dock .themedot{bottom:150px;right:16px}
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--accent);color:var(--bg)}
+.accent{color:var(--accent)}
+
+/* print grain over everything */
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:60;mix-blend-mode:overlay}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:20px 36px;background:linear-gradient(180deg,var(--navgrad),transparent);backdrop-filter:blur(2px)}
+.brand{font-family:var(--stencil);font-size:19px;letter-spacing:.02em;color:var(--ink)}
+.navlinks{display:flex;gap:26px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.navlinks a{color:var(--mut);transition:color .2s}
+.navlinks a:hover,.navlinks a.active{color:var(--ink)}
+.navlinks a.active:before{content:"▸ ";color:var(--accent)}
+
+/* footer */
+.footer{border-top:1px solid var(--line);margin-top:120px;padding:54px 36px 60px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;font-family:var(--mono);font-size:12px;color:var(--mut)}
+.footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;font-weight:400}
+.footer a{display:block;padding:4px 0;color:var(--mut)}
+.footer a:hover{color:var(--accent)}
+.footer .big{font-family:var(--stencil);font-size:26px;letter-spacing:.01em;color:var(--ink);line-height:1.15}
+
+/* page scaffolding (release detail + about) */
+.page{padding:120px 36px 0;max-width:1500px;margin:0 auto;min-height:80vh}
+.phead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:8px}
+.phead h1{font-family:var(--disp);font-size:72px;letter-spacing:.01em;line-height:.86;text-transform:uppercase}
+.phead .meta{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);text-align:right;line-height:1.8}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+
+/* group heading */
+.ghead{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);
+  margin:54px 0 8px;padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+
+/* release detail */
+.wd{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;padding-top:30px}
+.wd .lead h1{font-family:var(--disp);font-size:60px;letter-spacing:.01em;line-height:.92;text-transform:uppercase}
+.wd .role{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--accent);margin-top:16px;text-transform:uppercase}
+.wd .desc{font-size:17px;line-height:1.65;margin-top:26px;color:var(--ink2);max-width:46ch}
+.wd .specs{font-family:var(--mono);font-size:12px;line-height:2.1;margin-top:30px;color:var(--mut);border-top:1px solid var(--line);padding-top:18px}
+.wd .specs b{color:var(--ink);font-weight:400;display:inline-block;width:130px}
+.gallery{display:grid;grid-template-columns:1fr;gap:14px;align-content:start}
+.gallery img{width:100%;border:1px solid var(--line)}
+.rd-audio{width:100%;margin-top:2px}
+.wd-list{margin-top:28px;border-top:1px solid var(--line);padding-top:16px}
+.wd-list h4{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  font-weight:400;margin:0 0 12px}
+.wd-li{font-family:var(--mono);font-size:12px;line-height:2;color:var(--ink2)}
+.back{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:24px;display:inline-block}
+.back:hover{color:var(--accent)}
+.outlink{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:2px;margin-right:18px;display:inline-block;margin-top:4px}
+.outlink:hover{color:var(--accent)}
+
+/* tags (optional) */
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line2);padding:5px 10px;border-radius:2px}
+
+/* placeholder cover */
+.card{position:relative;display:block}
+.card .imgwrap{aspect-ratio:1/1;overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
+.card .noimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--mut);text-transform:uppercase}
+
+/* about */
+.about{display:grid;grid-template-columns:1.3fr .7fr;gap:60px;padding-top:30px}
+.about .bio p{font-size:18px;line-height:1.7;margin-bottom:18px;color:var(--ink3);max-width:58ch}
+.about .side h4{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin:0 0 14px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.about .side .pr{font-family:var(--mono);font-size:12px;color:var(--ink2);padding:7px 0;line-height:1.5}
+.about .side .pr a:hover{color:var(--accent)}
+.about .side{margin-bottom:40px}
+
+@media(max-width:880px){
+  .page{padding:96px 18px 0}
+  .nav{padding:16px 18px;background:linear-gradient(180deg,var(--bg) 55%,transparent);backdrop-filter:blur(4px)}
+  .wd,.about{grid-template-columns:1fr;gap:30px}
+  .wd .lead h1{font-size:40px}
+  .wd .desc{font-size:15.5px}
+  .phead{flex-direction:column;align-items:flex-start;gap:14px}
+  .phead h1{font-size:46px}
+  /* keep the Bungee wordmark on one line so the fixed nav stays short */
+  .brand{font-size:14px;white-space:nowrap}
+  .navlinks{gap:15px;font-size:11px}
+  .phead .meta{text-align:left}
+  .footer{grid-template-columns:1fr}
+}

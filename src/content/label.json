@@ -1,0 +1,24 @@
+{
+  "name": "Nentoke Records",
+  "shortName": "Nentoke",
+  "cataloguePrefix": "NEN",
+  "tagline": "Independent record label",
+  "strapline": "Pressed loud. Pasted up.",
+  "blurb": "Nentoke Records — an independent label working at street level. Screenprinted sleeves, honest masters, no genre allegiance.",
+  "about": [
+    "Nentoke Records is an independent label working at street level — records that start on walls, in basements, and on cassette dubs passed hand to hand. There is no house sound and no genre allegiance here: if it hits, we press it.",
+    "Every release gets a screenprinted sleeve and an honest master. The catalogue runs from NEN001 upward — play it loud, and pass it on.",
+    "Bookings, demos and distribution: get in touch below."
+  ],
+  "email": "hello@nentoke.example",
+  "socials": [
+    { "label": "Bandcamp", "url": "https://nentoke.bandcamp.com" },
+    { "label": "Instagram", "url": "https://instagram.com/nentokerecords" },
+    { "label": "SoundCloud", "url": "https://soundcloud.com/nentokerecords" }
+  ],
+  "artists": [
+    "Christian Duka",
+    "Vādin",
+    "MARMO"
+  ]
+}
